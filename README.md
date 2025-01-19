@@ -22,3 +22,4 @@
 * Run `docker compose exec laravel.test php artisan make:Model Order -m`
 * Run `docker compose exec laravel.test php artisan migrate`
 * Run to make job `docker compose exec laravel.test php artisan make:job SendSubscriptionJob`
+* Run to generate middleware `docker compose exec laravel.test php artisan make:middleware VerifyCsrfToken`

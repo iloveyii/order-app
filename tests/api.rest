@@ -1,0 +1,22 @@
+### POST Request to create a new user
+POST http://localhost/orders
+Content-Type: application/json
+
+{
+    "first_name": "Alan",
+    "last_name": "Turing",
+    "address": "123 Enigma Ave, Bletchley Park, UK",
+    "basket": [
+        {
+            "name": "Smindle ElePHPant plushie",
+            "type": "unit",
+            "price": 295.45
+        },
+        {
+            "name": "Syntax & Chill",
+            "type": "subscription",
+            "price": 175.00
+        }
+    ]
+}
+
