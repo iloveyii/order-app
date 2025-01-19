@@ -8,7 +8,7 @@
 ## Install
 
 * Start app `./vendor/bin/sail up`
-* Run migrations `docker-compose exec laravel.test php artisan migrate`
+* Run migrations `docker compose exec laravel.test php artisan migrate`
 * Browse to `http://localhost`
 
 ## Run
@@ -18,4 +18,4 @@
 
 ## Development
 
-* Run `docker-compose exec php artisan make:controller OrderController`
+* Run `docker compose exec laravel.test php artisan make:controller OrderController`
