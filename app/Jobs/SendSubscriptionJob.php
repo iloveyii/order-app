@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SendSubscriptionJob implements ShouldQueue
 {
@@ -31,6 +32,14 @@ class SendSubscriptionJob implements ShouldQueue
             'Timestamp' => now()->toDateTimeString(),
         ];
 
-        Http::post('https://very-slow-api.com/orders', $payload);
+        try {
+            sleep(10);
+            Log::info('Sending subscription to very-slow-api.com', $payload);
+            Http::post('https://very-slow-api.com/orders', $payload);
+        } catch (\Exception $e) {
+            Log::error('Failed to send subscription to very-slow-api.com', $payload);
+            return;
+        }
+        
     }
 }

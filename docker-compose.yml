@@ -49,7 +49,7 @@ services:
             timeout: 5s
       
     laravel.mysql.pma:
-      image: phpmyadmin/phpmyadmin
+      image: phpmyadmin/phpmyadmin:latest
       container_name: laravel_mysql_pma
       environment:
         PMA_HOST: "${DB_HOST}"
