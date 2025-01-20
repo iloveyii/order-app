@@ -1,7 +1,7 @@
 services:
-    laravel.test:
+    laravel.app:
         build:
-            context: './vendor/laravel/sail/runtimes/8.4'
+            context: './runtimes/8.4'
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -22,9 +22,9 @@ services:
         networks:
             - sail
         depends_on:
-            - mysql
-        entrypoint: sh -c "sleep 10 && php /var/www/html/artisan migrate && php /var/www/html/artisan serve --host=0.0.0.0 --port=80"
-    mysql:
+            - laravel.mysql
+        entrypoint: sh -c "composer install && sleep 10 && php /var/www/html/artisan migrate && php /var/www/html/artisan serve --host=0.0.0.0 --port=80"
+    laravel.mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
@@ -61,7 +61,7 @@ services:
       ports:
         - 8095:80
       depends_on:
-        - mysql
+        - laravel.mysql
       networks:
         - sail
 networks:
