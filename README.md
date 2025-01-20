@@ -11,6 +11,7 @@
 * Run the app as: `docker compose up -d`
 * Browse to `http://localhost`
 * To create an order open the file `test/api.rest` in vscode with plugin `REST Client by Huachao Mao` installed and click `Send Request` just below the comment line at the top
+* Optionally browse to `http://localhost:8095/` to see database using PhpMyAdmin
 
 ## Development
 
