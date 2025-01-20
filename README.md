@@ -5,7 +5,7 @@
 * A simple dockerized app
 * The order received is saved in db after validation & a request is made to a subscription API async
 
-![Demo](./orderapp.gif)
+![Demo](https://github.com/iloveyii/order-app/blob/main/orderapp.gif)
 
 ## Run
 
