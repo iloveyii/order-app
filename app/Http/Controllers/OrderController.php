@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use App\Jobs\SendSubscriptionJob;
+use App\Models\Order;
+
 
 class OrderController extends Controller
 {
@@ -24,7 +26,15 @@ class OrderController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
+        Order::create($request->only(['first_name', 'last_name', 'address']));
 
+        foreach ($request->basket as $item) {
+            if ($item['type'] === 'subscription') {
+                SendSubscriptionJob::dispatch($item);
+            }
+        }
+
+        return response()->json(['message' => 'Order saved successfully'], 201);
     }
 
     /**
