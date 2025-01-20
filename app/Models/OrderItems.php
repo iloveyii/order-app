@@ -9,5 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class OrderItems extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'type', 'price'];
+    protected $fillable = ['order_id', 'name', 'type', 'price'];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

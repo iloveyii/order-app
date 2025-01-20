@@ -26,12 +26,13 @@ class OrderController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        Order::create($request->only(['first_name', 'last_name', 'address']));
+        $order = Order::create($request->only(['first_name', 'last_name', 'address']));
 
         foreach ($request->basket as $item) {
-            if ($item['type'] === 'subscription') {
-                SendSubscriptionJob::dispatch($item);
-            }
+          $order->basket()->create($item);
+          if ($item['type'] === 'subscription') {
+              SendSubscriptionJob::dispatch($item);
+          }
         }
 
         return response()->json(['message' => 'Order saved successfully'], 201);
