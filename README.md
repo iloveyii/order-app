@@ -20,6 +20,7 @@
 
 * Run `docker compose exec laravel.test php artisan make:controller OrderController`
 * Run `docker compose exec laravel.test php artisan make:Model Order -m`
+* Run `docker compose exec laravel.test php artisan make:Model OrderItems -m`
 * Run `docker compose exec laravel.test php artisan migrate`
 * Run to make job `docker compose exec laravel.test php artisan make:job SendSubscriptionJob`
-* Run the queue worker `docker compose exec laravel.test php artisan queue:work`
+* Run the queue worker & see log at storage/logs `docker compose exec laravel.test php artisan queue:work`
