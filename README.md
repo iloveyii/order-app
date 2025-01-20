@@ -5,16 +5,12 @@
 * A simple dockerized app
 * The order received is saved in db after validation & a request is made to a subscription API async
 
-## Install
-
-* Start app `./vendor/bin/sail up`
-* Run migrations `docker compose exec laravel.test php artisan migrate`
-* Browse to `http://localhost`
-
 ## Run
 
+* Copy env file as `cp .env.example .env`
 * Run the app as: `docker compose up -d`
-
+* Browse to `http://localhost`
+* To create an order open the file `test/api.rest` in vscode with plugin `REST Client by Huachao Mao` installed and click `Send Request` just below the comment line at the top
 
 ## Development
 
