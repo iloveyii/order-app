@@ -23,6 +23,7 @@ services:
             - sail
         depends_on:
             - mysql
+        entrypoint: sh -c "sleep 10 && php /var/www/html/artisan migrate && php /var/www/html/artisan serve --host=0.0.0.0 --port=80"
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
